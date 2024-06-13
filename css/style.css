@@ -1,7 +1,280 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Serif+Text:ital@0;1&display=swap');
+
 /* Normalize */
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-contraste);
+}
+
+ul,ol{
+    list-style: none;
+}
+
+input, button{
+    border: none;
+    outline: none;
+}
+
+
+/* Variables */
+
+:root{
+
+    /* Colores */
+    --color-primario: #00ADB5;
+    --color-secundario: #393E46;
+    --color-terciario: #222831;
+    --color-contraste: #EEEEEE;
+
+    /* Fuentes */
+    --fuente-titulos: "DM Serif Text", serif;
+    --fuente-textos: "Arimo", sans-serif;
+
+    /* Gradiente */
+    --gradiente-primario: linear-gradient( 86.3deg,  rgba(0,119,182,1) 3.6%, rgba(8,24,68,1) 87.6% );
+
+    /* Medidas */
+    --max-width: 1920px;
+    --max-height: 700px;
+    --space-medium: 20px;
+    --space-small: 10px;
+
+}
+
+/* Animaciones */
+
+@keyframes delizado-izq{
+    0%{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes titulo-animado{
+    0%{
+        color: red;
+    }
+
+    50%{
+        color: blue;
+    }
+
+    100%{
+        color: gold;
+    }
+}
+
+/* Elementos comunes */
+.titulo-animado{
+    font-size: 2.5rem;
+    animation: delizado-izq 1s /* infinite */;
+    text-align: center;
+    width: 100%;
+}
+
+button{
+    background: var(--gradiente-primario);
+    color: var(--color-contraste);
+    padding: var(--space-small);
+    border-radius: var(--space-small);
+}
+
+button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 3px var(--color-contraste);
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: var(--fuente-titulos);
+}
+
+a:hover{
+    color: var(--color-primario);
+}
+
+.seccion{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: var(--space-medium);
+}
+
+/* Cards */
+
+.card{
+    display: flex;
+    flex-flow: column;
+
+    background-color: var(--color-primario);
+    border-radius: 15px;
+}
+
+.card img{
+    height: 450px;
+    width: 400px;
+    border-radius: 15px 15px 0 0;
+}
+
+.card-info{
+    display: flex;
+    flex-flow: column;
+    gap: var(--space-medium);
+    padding: var(--space-medium);
+    font-size: 1.7rem;
+    color: var(--color-terciario);
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer button{
+    padding: 10px 30px;
+    font-size: 1.5rem;
+}
+
+
+/* Body */
+body{
+    font-family: var(--fuente-textos);
+    background: var(--color-secundario);
+    color: var(--color-contraste);
+}
+
+
+/* Header */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-medium);
+    background-color: var(--color-terciario);
+}
+
+header h1:hover{
+    animation: titulo-animado 1s infinite;
+}
+
+header nav{
+    display: flex;
+    gap: var(--space-medium);
+}
+
+
+/* Main */
+
+.tienda{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    row-gap: 80px;
+    flex-flow: wrap;
+    margin-bottom: var(--space-medium);
+}
+
+
+
+/* Footer */
+
+footer{
+    background: var(--color-terciario);
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-medium);
+
+    border-radius: 40px 40px 0  0;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.footer-redes{
+    display: flex;
+    gap: var(--space-medium);
+    font-size: 2rem;
+    margin-bottom: var(--space-medium);
+}
+
+.footer-redes a:hover{
+    cursor: pointer;
+    color: var(--color-primario);
+    transform: translateY(-5px);
+    transition-duration: 0.5s;
+}
+
+/* Media queries */
+
+/* Celular */
+
+@media screen and (max-width: 480px) {
+    header{
+        flex-flow: column;
+        row-gap: var(--space-medium);
+    }
+
+    header nav{
+        column-gap: 30px;
+    }
+
+    .card img{
+        height: 320px;
+        width: 290px;
+    }
+
+    .card-info{
+        font-size: 1rem;
+    }
+
+    .card-footer button{
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .tienda{
+        column-gap: 10px;
+    }
+
+    .card img{
+        height: 320px;
+        width: 290px;
+    }
+}
+
+/* Escritorio pequeño */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .card img{
+        height: 300px;
+        width: 300px;
+    }
+
+    .card-info{
+        font-size: 1rem;
+    }
+
+    .card-footer button{
+        font-size: 1rem;
+        padding: 10px;
+    }
 }
